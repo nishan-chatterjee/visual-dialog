@@ -1,0 +1,414 @@
+.
+├── checkpoints
+│   └── tensorboard
+├── data
+│   ├── coco
+│   │   ├── annotations_trainval2014
+│   │   │   └── annotations
+│   │   ├── train2014
+│   │   └── val2014
+│   ├── subsets
+│   ├── v0.9
+│   └── v1.0
+│       ├── VisualDialog_test2018
+│       └── VisualDialog_val2018
+├── embeddings
+│   ├── answers
+│   │   └── 1
+│   ├── fusion
+│   ├── glove
+│   ├── history
+│   │   ├── 1
+│   │   ├── 10
+│   │   └── 100
+│   ├── images
+│   │   ├── instance
+│   │   │   ├── 1
+│   │   │   ├── 10
+│   │   │   └── 100
+│   │   └── panoptic
+│   └── questions
+│       ├── 1
+│       │   ├── dependency_heads
+│       │   ├── dependency_labels
+│       │   └── linearized_constituency_tree
+│       ├── 10
+│       │   ├── dependency_heads
+│       │   ├── dependency_labels
+│       │   └── linearized_constituency_tree
+│       └── 100
+│           ├── dependency_heads
+│           ├── dependency_labels
+│           └── linearized_constituency_tree
+├── env_configs
+├── github
+│   ├── bottom-up-attention
+│   │   ├── caffe
+│   │   │   ├── cmake
+│   │   │   │   ├── External
+│   │   │   │   ├── Modules
+│   │   │   │   └── Templates
+│   │   │   ├── docker
+│   │   │   │   ├── standalone
+│   │   │   │   │   ├── cpu
+│   │   │   │   │   └── gpu
+│   │   │   │   └── templates
+│   │   │   ├── docs
+│   │   │   │   ├── images
+│   │   │   │   ├── _layouts
+│   │   │   │   ├── stylesheets
+│   │   │   │   └── tutorial
+│   │   │   │       ├── fig
+│   │   │   │       └── layers
+│   │   │   ├── examples
+│   │   │   │   ├── cifar10
+│   │   │   │   ├── cpp_classification
+│   │   │   │   ├── feature_extraction
+│   │   │   │   ├── finetune_flickr_style
+│   │   │   │   ├── finetune_pascal_detection
+│   │   │   │   ├── hdf5_classification
+│   │   │   │   ├── imagenet
+│   │   │   │   ├── images
+│   │   │   │   ├── mnist
+│   │   │   │   ├── net_surgery
+│   │   │   │   ├── pycaffe
+│   │   │   │   │   └── layers
+│   │   │   │   ├── siamese
+│   │   │   │   └── web_demo
+│   │   │   │       └── templates
+│   │   │   ├── include
+│   │   │   │   └── caffe
+│   │   │   │       ├── layers
+│   │   │   │       ├── test
+│   │   │   │       └── util
+│   │   │   ├── matlab
+│   │   │   │   ├── +caffe
+│   │   │   │   │   ├── imagenet
+│   │   │   │   │   ├── private
+│   │   │   │   │   └── +test
+│   │   │   │   ├── demo
+│   │   │   │   └── hdf5creation
+│   │   │   ├── python
+│   │   │   │   └── caffe
+│   │   │   │       ├── imagenet
+│   │   │   │       ├── __pycache__
+│   │   │   │       └── test
+│   │   │   ├── scripts
+│   │   │   │   └── travis
+│   │   │   ├── src
+│   │   │   │   ├── caffe
+│   │   │   │   │   ├── layers
+│   │   │   │   │   ├── proto
+│   │   │   │   │   ├── solvers
+│   │   │   │   │   ├── test
+│   │   │   │   │   │   └── test_data
+│   │   │   │   │   └── util
+│   │   │   │   └── gtest
+│   │   │   └── tools
+│   │   │       └── extra
+│   │   ├── data
+│   │   │   ├── demo
+│   │   │   ├── faster_rcnn_models
+│   │   │   ├── genome
+│   │   │   │   ├── 1600-400-20
+│   │   │   │   ├── coco_splits
+│   │   │   │   └── visual_genome_python_driver
+│   │   │   └── scripts
+│   │   ├── experiments
+│   │   │   ├── cfgs
+│   │   │   ├── logs
+│   │   │   └── scripts
+│   │   ├── ImageSets
+│   │   │   └── Main
+│   │   ├── lib
+│   │   │   ├── datasets
+│   │   │   │   ├── tools
+│   │   │   │   └── VOCdevkit-matlab-wrapper
+│   │   │   ├── fast_rcnn
+│   │   │   ├── nms
+│   │   │   ├── pycocotools
+│   │   │   ├── roi_data_layer
+│   │   │   ├── rpn
+│   │   │   ├── transform
+│   │   │   └── utils
+│   │   ├── models
+│   │   │   ├── coco
+│   │   │   │   ├── ResNet-101
+│   │   │   │   │   ├── rfcn_alt_opt_5step_ohem
+│   │   │   │   │   └── rfcn_end2end
+│   │   │   │   ├── VGG16
+│   │   │   │   │   ├── faster_rcnn_end2end
+│   │   │   │   │   └── fast_rcnn
+│   │   │   │   └── VGG_CNN_M_1024
+│   │   │   │       ├── faster_rcnn_end2end
+│   │   │   │       └── fast_rcnn
+│   │   │   ├── imagenet
+│   │   │   │   └── ResNet-101
+│   │   │   │       ├── rfcn_alt_opt_5step_ohem
+│   │   │   │       └── rfcn_end2end
+│   │   │   │           └── class-aware
+│   │   │   ├── pascal_voc
+│   │   │   │   ├── ResNet-101
+│   │   │   │   │   ├── rfcn_alt_opt_5step_ohem
+│   │   │   │   │   └── rfcn_end2end
+│   │   │   │   │       └── class-aware
+│   │   │   │   ├── ResNet-50
+│   │   │   │   │   ├── rfcn_alt_opt_5step_ohem
+│   │   │   │   │   └── rfcn_end2end
+│   │   │   │   │       └── class-aware
+│   │   │   │   ├── VGG16
+│   │   │   │   │   ├── faster_rcnn_alt_opt
+│   │   │   │   │   ├── faster_rcnn_end2end
+│   │   │   │   │   └── fast_rcnn
+│   │   │   │   ├── VGG_CNN_M_1024
+│   │   │   │   │   ├── faster_rcnn_alt_opt
+│   │   │   │   │   ├── faster_rcnn_end2end
+│   │   │   │   │   └── fast_rcnn
+│   │   │   │   └── ZF
+│   │   │   │       ├── faster_rcnn_alt_opt
+│   │   │   │       ├── faster_rcnn_end2end
+│   │   │   │       └── fast_rcnn
+│   │   │   └── vg
+│   │   │       ├── ResNet-101
+│   │   │       │   └── faster_rcnn_end2end_final
+│   │   │       └── VGG16
+│   │   │           ├── faster_rcnn_end2end
+│   │   │           ├── faster_rcnn_end2end_attr
+│   │   │           └── faster_rcnn_end2end_attr_softmax_primed
+│   │   └── tools
+│   ├── detectron2
+│   │   ├── build
+│   │   │   ├── lib.linux-x86_64-cpython-39
+│   │   │   │   └── detectron2
+│   │   │   └── temp.linux-x86_64-cpython-39
+│   │   │       └── bigpool
+│   │   │           └── homes
+│   │   │               └── chatterjee
+│   │   │                   └── gnnVD
+│   │   │                       └── github
+│   │   │                           └── detectron2
+│   │   │                               └── detectron2
+│   │   │                                   └── layers
+│   │   │                                       └── csrc
+│   │   │                                           ├── box_iou_rotated
+│   │   │                                           ├── cocoeval
+│   │   │                                           ├── deformable
+│   │   │                                           ├── nms_rotated
+│   │   │                                           └── ROIAlignRotated
+│   │   ├── configs
+│   │   │   ├── Cityscapes
+│   │   │   ├── COCO-Detection
+│   │   │   ├── COCO-InstanceSegmentation
+│   │   │   ├── COCO-Keypoints
+│   │   │   ├── COCO-PanopticSegmentation
+│   │   │   ├── common
+│   │   │   │   ├── data
+│   │   │   │   └── models
+│   │   │   ├── Detectron1-Comparisons
+│   │   │   ├── LVISv0.5-InstanceSegmentation
+│   │   │   ├── LVISv1-InstanceSegmentation
+│   │   │   ├── Misc
+│   │   │   ├── new_baselines
+│   │   │   ├── PascalVOC-Detection
+│   │   │   └── quick_schedules
+│   │   ├── datasets
+│   │   ├── demo
+│   │   ├── detectron2
+│   │   │   ├── checkpoint
+│   │   │   │   └── __pycache__
+│   │   │   ├── config
+│   │   │   │   └── __pycache__
+│   │   │   ├── data
+│   │   │   │   ├── datasets
+│   │   │   │   │   └── __pycache__
+│   │   │   │   ├── __pycache__
+│   │   │   │   ├── samplers
+│   │   │   │   │   └── __pycache__
+│   │   │   │   └── transforms
+│   │   │   │       └── __pycache__
+│   │   │   ├── engine
+│   │   │   │   └── __pycache__
+│   │   │   ├── evaluation
+│   │   │   │   └── __pycache__
+│   │   │   ├── export
+│   │   │   ├── layers
+│   │   │   │   ├── csrc
+│   │   │   │   │   ├── box_iou_rotated
+│   │   │   │   │   ├── cocoeval
+│   │   │   │   │   ├── deformable
+│   │   │   │   │   ├── nms_rotated
+│   │   │   │   │   └── ROIAlignRotated
+│   │   │   │   └── __pycache__
+│   │   │   ├── modeling
+│   │   │   │   ├── backbone
+│   │   │   │   │   └── __pycache__
+│   │   │   │   ├── meta_arch
+│   │   │   │   │   └── __pycache__
+│   │   │   │   ├── proposal_generator
+│   │   │   │   │   └── __pycache__
+│   │   │   │   ├── __pycache__
+│   │   │   │   └── roi_heads
+│   │   │   │       └── __pycache__
+│   │   │   ├── model_zoo
+│   │   │   │   ├── configs -> /bigpool/homes/chatterjee/gnnVD/github/detectron2/configs
+│   │   │   │   └── __pycache__
+│   │   │   ├── projects
+│   │   │   ├── __pycache__
+│   │   │   ├── solver
+│   │   │   │   └── __pycache__
+│   │   │   ├── structures
+│   │   │   │   └── __pycache__
+│   │   │   ├── tracking
+│   │   │   └── utils
+│   │   │       └── __pycache__
+│   │   ├── detectron2.egg-info
+│   │   ├── dev
+│   │   │   └── packaging
+│   │   ├── docker
+│   │   ├── docs
+│   │   │   ├── modules
+│   │   │   ├── notes
+│   │   │   ├── _static
+│   │   │   │   └── css
+│   │   │   └── tutorials
+│   │   ├── projects
+│   │   │   ├── DeepLab
+│   │   │   │   ├── configs
+│   │   │   │   │   └── Cityscapes-SemanticSegmentation
+│   │   │   │   └── deeplab
+│   │   │   ├── DensePose
+│   │   │   │   ├── configs
+│   │   │   │   │   ├── cse
+│   │   │   │   │   ├── evolution
+│   │   │   │   │   ├── HRNet
+│   │   │   │   │   └── quick_schedules
+│   │   │   │   │       └── cse
+│   │   │   │   ├── densepose
+│   │   │   │   │   ├── converters
+│   │   │   │   │   ├── data
+│   │   │   │   │   │   ├── datasets
+│   │   │   │   │   │   ├── meshes
+│   │   │   │   │   │   ├── samplers
+│   │   │   │   │   │   ├── transform
+│   │   │   │   │   │   └── video
+│   │   │   │   │   ├── engine
+│   │   │   │   │   ├── evaluation
+│   │   │   │   │   ├── modeling
+│   │   │   │   │   │   ├── cse
+│   │   │   │   │   │   ├── losses
+│   │   │   │   │   │   ├── predictors
+│   │   │   │   │   │   └── roi_heads
+│   │   │   │   │   ├── structures
+│   │   │   │   │   ├── utils
+│   │   │   │   │   └── vis
+│   │   │   │   ├── dev
+│   │   │   │   ├── doc
+│   │   │   │   └── tests
+│   │   │   ├── MViTv2
+│   │   │   │   └── configs
+│   │   │   │       └── common
+│   │   │   ├── Panoptic-DeepLab
+│   │   │   │   ├── configs
+│   │   │   │   │   ├── Cityscapes-PanopticSegmentation
+│   │   │   │   │   └── COCO-PanopticSegmentation
+│   │   │   │   └── panoptic_deeplab
+│   │   │   ├── PointRend
+│   │   │   │   ├── configs
+│   │   │   │   │   ├── InstanceSegmentation
+│   │   │   │   │   └── SemanticSegmentation
+│   │   │   │   └── point_rend
+│   │   │   ├── PointSup
+│   │   │   │   ├── configs
+│   │   │   │   ├── point_sup
+│   │   │   │   └── tools
+│   │   │   ├── Rethinking-BatchNorm
+│   │   │   │   └── configs
+│   │   │   ├── TensorMask
+│   │   │   │   ├── configs
+│   │   │   │   ├── tensormask
+│   │   │   │   │   └── layers
+│   │   │   │   │       └── csrc
+│   │   │   │   │           └── SwapAlign2Nat
+│   │   │   │   └── tests
+│   │   │   ├── TridentNet
+│   │   │   │   ├── configs
+│   │   │   │   └── tridentnet
+│   │   │   └── ViTDet
+│   │   │       └── configs
+│   │   │           ├── COCO
+│   │   │           ├── common
+│   │   │           └── LVIS
+│   │   ├── tests
+│   │   │   ├── config
+│   │   │   │   └── dir1
+│   │   │   ├── data
+│   │   │   ├── export
+│   │   │   ├── layers
+│   │   │   ├── modeling
+│   │   │   ├── structures
+│   │   │   └── tracking
+│   │   └── tools
+│   │       └── deploy
+│   ├── LAL-Parser
+│   │   ├── data
+│   │   ├── EVALB
+│   │   │   ├── bug
+│   │   │   ├── evalb.dSYM
+│   │   │   │   └── Contents
+│   │   │   │       └── Resources
+│   │   │   │           └── DWARF
+│   │   │   └── sample
+│   │   ├── incomplete
+│   │   ├── sentence_list
+│   │   └── src_joint
+│   │       ├── pretrained_bert
+│   │       ├── __pycache__
+│   │       └── pytorch_transformers
+│   │           └── tests
+│   │               └── fixtures
+│   └── visdial
+│       ├── checkpoints
+│       │   └── tensorboard
+│       │       ├── model_v10-train_metrics_mean
+│       │       ├── model_v10-train_metrics_mrr
+│       │       ├── model_v10-train_metrics_r@1
+│       │       ├── model_v10-train_metrics_r@10
+│       │       └── model_v10-train_metrics_r@5
+│       ├── datasets
+│       │   ├── annotations
+│       │   │   └── checkpoints
+│       │   │       └── tensorboard
+│       │   ├── bottom-up-attention
+│       │   │   └── checkpoints
+│       │   │       └── tensorboard
+│       │   ├── coco
+│       │   │   └── trainval2014
+│       │   ├── genome
+│       │   │   └── 1600-400-20
+│       │   ├── glove
+│       │   └── trainval2014
+│       ├── others
+│       ├── __pycache__
+│       └── visdial
+│           ├── common
+│           │   └── __pycache__
+│           ├── data
+│           │   └── __pycache__
+│           ├── decoders
+│           │   └── __pycache__
+│           ├── encoders
+│           │   └── __pycache__
+│           ├── optim
+│           │   └── __pycache__
+│           ├── __pycache__
+│           └── utils
+│               └── __pycache__
+├── notebooks
+├── notebooks_val
+├── others
+├── outputs
+├── saved_models
+├── scrap
+└── tools
+
+411 directories

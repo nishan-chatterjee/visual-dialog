@@ -1,0 +1,1000 @@
+wc -l < sentence_list/example_sentences.txt 
+wc -l < sentence_list/visdial_1.0_train_questions.txt 
+wc -l < example_sentences.txt 
+sh parse.sh 
+ls
+clear
+nano output_synconst_146.txt
+exit
+screen -r
+git mv scripts/ notebooks
+ls
+git commit -m "scripts contained mainly notebooks: gonna have to recode them into argparse scripts later"
+git push -u origin main
+ls
+git add embeddings/history/10/history.json embeddings/history/100/history.json 
+git commit -m "history for 10 and 100 percent data"
+git add notebooks/glove.ipynb 
+git commit -m "testing embedding loader and checking oov distribution"
+git add notebooks/history_graph.ipynb 
+git commit -m "running the history generation structure for the 10 and 100 percent data"
+git add tools/functionalities.ipynb
+git commit -m "pushed the glove part of the code under the glove notebook"
+git push -u origin main
+git add notebooks/glove.ipynb
+git commit -m "added the sentence LSTM"
+git push -u origin main
+git add tools/functionalities.ipynb
+git commit -m "moved the sentence LSTM to the glove notebook"
+git add notebooks/history_graph.ipynb
+git commit -m "code for creating the edge list and adj matrices"
+git push -u origin main
+git add embeddings/history/1/* embeddings/history/10/* embeddings/history/100/history.json 
+git add notebooks/history_graph.ipynb 
+git commit -m "created the edge list and adj matrix for 1 and 10%. Computing the 100 percent history graph now."
+git add notebooks/glove.ipynb 
+git commit -m "made the last layer dependant on the length of the sentence, but doesn't really matter in this case. Simple unsqueeze would have worked too as the last push"
+git push -u origin main
+exit
+git mv data/visdial_1.0_train_questions.txt data/subsets/
+ls
+cd data/
+ls
+cd ..
+git add notebooks/caption_analyis.ipynb 
+git commit -m "length error for showing number of mistaken captions"
+git add notebooks/glove.ipynb 
+git commit -m "kernel crashed, but pushing code anyway. No real change."
+git add notebooks/history_graph.ipynb 
+git commit -m "still working on the 100percent data history creation"
+git add tools/functionalities.ipynb
+git commit -m "creating a visdial1.0 train json where image paths are mentioned with their relative data path instead of only ID's for my simplicity of use"
+git commit --amend -m "creating a visdial1.0 train json where image paths are mentioned with their relative data path instead of only ID's for my simplicity of use: need to refactor this to somewhere else though since not really a functionality"
+git push -u origin main
+git rm data/subsets/visdial_1.0_train_questions.txt 
+git add notebooks/data_subset.ipynb 
+git commit -m "was saving the image name remap to their relative paths in the wrong format before. fixed that"
+git add tools/functionalities.ipynb 
+git commit -m "moved the image path remap to the data_subset notebook"
+nano .gitignore 
+git add .gitignore 
+git commit -m "updated gitignore to ignore the image remap for 100percent Visdial1.0 train"
+git push -u origin main
+cd data/subsets/
+head -20 visdial_1.0_train_1percent_subset_questions.txt 
+head -20 visdial_1.0_train_10percent_subset_questions.txt 
+head -20 visdial_1.0_train_100percent_subset_questions.txt 
+clear
+cd ..
+git add notebooks/data_subset.ipynb 
+git commit -m "cleaned code for the 100percent train file"
+git commit -m notebooks/history_graph.ipynb 
+git add notebooks/history_graph.ipynb 
+git commit -m "saving notebook just because"
+git commit --amend -m "saving notebook with updated compilation runtime: trivial"
+git push -u origin main
+screen r
+screen -r
+screen
+git add notebooks/data_subset.ipynb 
+git commit -m "missed the formatting at the bottom of the notebook: updated it"
+git push -u origin main
+screen -r
+git add notebooks/data_subset.ipynb 
+git commit -m "missed the formatting of the questions with ? at the end: fixed that for consistency: also going to test out the lal-parser for the 100 data"
+git add notebooks/history_graph.ipynb
+git commit -m "kernel crashed: redoing it. Damn!"
+git push -u origin main
+screen -r
+exit
+screen -r
+conda activate neural-parser
+conda env export > env_configs/neural-parser.lock.yaml 
+cp env_configs/neural-parser.lock.yaml env_configs/e2e.lock.yaml
+nano env_configs/e2e.lock.yaml 
+cd env_configs/
+ls
+rm e2e.lock.yaml 
+conda deactivate
+conda env create -f e2ecoref.lock.yaml 
+python3 -m spacy download en_core_web_sm
+nano e2ecoref.lock.yaml 
+conda env create -f e2ecoref.lock.yaml 
+conda env remove -n e2ecoref
+conda env create -f e2ecoref.lock.yaml 
+conda env list
+conda env remove -n e2ecoref
+conda create --name e2ecoref --clone coreference
+cd ..
+conda activate e2ecoref
+conda env list
+cd ..
+cd anaconda3/envs/e2ecoref/
+ls
+cd bin
+ls
+cd
+screen -r
+exit
+screen -r
+exit
+screen -r
+exit
+cd embeddings/history/100/
+ls -a
+ls -l
+ls -l --block-size=M
+cd ../../../data/subsets/
+ls -l --block-size=M
+cd ..
+ls
+cd ..
+ls
+git add embeddings/history/100/* notebooks/history_graph.ipynb 
+git commit --amend -m "saving notebook with adj matrix and edge list for 100 percent of the data"
+git add env_configs/e2ecoref.lock.yaml env_configs/neural-parser.lock.yaml 
+conda activate e2ecoref
+conda env export > env_configs/e2ecoref.lock.yaml
+git add env_configs/e2ecoref.lock.yaml 
+git commit -m "updated environments: e2ecoref is a copy of neural-parser where I run history related stuff in parallel, since mutliple scripts using the same kernel crashes it"
+git push -u origin main
+git status
+git pull
+git status
+git config pull.rebase false
+git pull
+git merge --strategy-option=ours
+git pull
+git push -u origin main
+git config --global pull.ff only
+git pull
+git reset --hard HEAD  
+git push
+git pull
+git push -u origin main
+git status
+git pull
+git reset --hard HEAD
+git pull
+git reset --hard HEAD~1
+git reset --hard HEAD~2
+git pull
+git status
+git add embeddings/history/100/* notebooks/history_graph.ipynb 
+git commit --amend -m "saving notebook with adj matrix and edge list for 100 percent of the data: merge conflict resolution as well"
+git add env_configs/*
+git commit -m "updated environments: e2ecoref is a copy of neural-parser where I run history related stuff in parallel, since mutliple scripts using the same kernel crashes it: merge conflict resolution as well"
+git push -u origin main
+git config --global pull.ff false
+git push -u origin main
+git config --global --add merge.ff false
+git push -u origin main
+git status
+git pull
+git reset --hard HEAD~2
+git pull
+git status
+git push
+git add embeddings/history/100/* notebooks/history_graph.ipynb 
+git commit --amend -m "saving notebook with adj matrix and edge list for 100 percent of the data: merge conflict resolution as well"
+git add env_configs/*
+git commit -m "updated environments: e2ecoref is a copy of neural-parser where I run history related stuff in parallel, since mutliple scripts using the same kernel crashes it: merge conflict resolution as well"
+git push -u origin main
+git status
+git reset --hard HEAD~2
+git status
+git pull
+git status
+git push -u origin main
+ls
+cd notebooks/
+ls
+cd ..
+git status
+git config --add merge.ff false
+git push 
+git add notebooks/history_graph.ipynb 
+git commit -m "saving notebook with adj matrix and edge list for 100 percent of the data: merge conflict resolution as well"
+git push -u origin main
+git add env_configs/*
+git commit -m "updated environments: e2ecoref is a copy of neural-parser where I run history related stuff in parallel, since mutliple scripts using the same kernel crashes it: merge conflict resolution as well"
+git push -u origin main
+git add embeddings/history/100/*
+git commit -m "saving adj matrix and edge list for 100 percent of the data: merge conflict resolution as well"
+git push -u origin main
+conda deactivate
+screen -r
+exit
+screen -r
+exit
+git add notebooks/history_graph.ipynb 
+git commit -m "integrating sentencelstm"
+git push -u origin main
+screen -r
+exit
+conda activate e2ecoref
+/bigpool/homes/chatterjee/anaconda3/envs/e2ecoref/bin/python -m pip install -U autopep8
+conda activate e2ecoref
+python3
+conda install pandas
+pip install pandas
+pip install nltk
+cp /etc/skel/* .
+cp /etc/skel/.b} .
+cp /etc/skel/.b*
+cp /etc/skel/.b* .
+cp /etc/skel/.p* .
+ls -la
+ping www.welt.de
+ssh localhost
+exit
+cd github/LAL-Parser/
+cp ../../data/subsets/visdial_1.0_train_100percent_subset_questions.txt sentence_list/
+cd sentence_list/
+ls
+clear
+ls
+head -5 visdial_1.0_train_questions.txt 
+head -5 visdial_1.0_train_100percent_subset_questions.txt 
+diff visdial_1.0_train_100percent_subset_questions.txt visdial_1.0_train_questions.txt 
+conda activate neural-parser
+rm visdial_1.0_train_questions.txt 
+cp visdial_1.0_train_100percent_subset_questions.txt ../example_sentences.txt 
+cd ..
+head -5 example_sentences.txt 
+sh parse.sh 
+exit
+screen -ls
+screen -r
+exit
+git add embeddings/images/instance/100/res50_*
+git add notebooks/image_graph.ipynb 
+git commit -m "embeddings for 100 percent of the subset"
+git push -u origin main
+exit
+git add notebooks/gog.ipynb 
+git commit -m "skeleton of gog implementation"
+git push -u origin main
+exit
+cd github/
+git clone https://github.com/davidnvq/visdial.git
+cd ..
+git add notebooks/gog.ipynb 
+git commit -m "skeleton of gog implementation with davidnvq visdial"
+git push -u origin main
+screen -r
+screen -ls
+git add notebooks/history_graph.ipynb notebooks/question_graph.ipynb 
+git commit -m "intermediate checkpoints"
+git push -u origin main
+exit
+git mv data/subsets/visdial_1.0_train_1*.txt embeddings/questions/
+cp data/subsets/visdial_1.0_train_1*.txt embeddings/questions/
+git rm data/subsets/visdial_1.0_train_1percent_subset_questions.txt data/subsets/visdial_1.0_train_10percent_subset_questions.txt 
+cd embeddings/questions/
+ls
+mv visdial_1.0_train_1percent_subset_questions.txt 1/questions.txt
+mv visdial_1.0_train_10percent_subset_questions.txt 10/questions.txt
+mv visdial_1.0_train_100percent_subset_questions.txt 100/questions.txt
+cd ..
+git add embeddings/questions/
+git commit -m "moved question splits to embeddings"
+git push -u origin main
+conda activate e2ecoref
+conda deactivate
+pip install seaborn
+screen
+screen -ls
+exit
+screen -r
+exit
+screen -r
+exit
+screen -r
+exit
+screen -r
+exit
+screen -r
+exit
+screen -r
+exit
+screen -r
+exit
+conda activate neural-parser
+cd github/LAL-Parser/
+sh parse.sh
+sh parse.sh
+exit
+cd github/LAL-Parser/
+ls
+screen -r
+cd ../..
+mv github/LAL-Parser/output_syn* embeddings/questions/100/
+ls github/LAL-Parser/
+cd github/LAL-Parser/sentence_list/
+ls
+cd ..
+mv sentence_list/example_sentences.txt example_sentences.txt 
+cat example_sentences.txt 
+cd ../..
+cd embeddings/questions/100/
+ls
+mkdir dependency_heads dependency_labels linearized_constituency_tree
+mv output_syndephead_* dependency_heads/
+mv output_syndeplabel_* dependency_labels/
+mv output_synconst_* linearized_constituency_tree/
+ls
+pip install natsort
+pip uninstall natsort
+conda install -c anaconda natsort 
+cd ../../
+cd ..
+git add embeddings/questions/100/*
+git reset
+git status
+nano .gitignore 
+git add embeddings/questions/100/* .gitignore 
+git reset
+nano .gitignore 
+git add embeddings/questions/100/dependency_heads.txt embeddings/questions/100/dependency_labels.txt embeddings/questions/100/linearized_constituency_tree.txt .gitignore 
+git commit -m "100percent question embeddings"
+git push -u origin main
+git add notebooks/question_graph.ipynb 
+git commit -m "fixed the LSTM representations which now generates the hidden LSTM state treating the questions as fractal sequences, so the context dependency is represented for each word in a sentence"
+git add scrap/questions.ipynb
+git commit -m "non-working code but maybe useful idk"
+git push -u origin main
+git add notebooks/image_graph.ipynb 
+git commit -m "cropped/padded the images and converted them into an image of shape 224x224x3 and output the 2048-dim vector from the last layer of the resnet50 model"
+git push -u origin main
+exit
+conda activate e2ecoref
+conda activate gnnVD
+pip install stanfordnlp
+python3
+pip uninstall stanfordnlp
+pip install stanza
+python3
+git add embeddings/questions/1/question_graphs.pkl notebooks/question_graph.ipynb tools/question_adjustments.ipynb 
+git commit -m "creating a unique integer embedding for the dependency labels since they're not parsable by glove (oov) and initializing the question graph"
+git push -u origin main
+git add embeddings/questions/10/* notebooks/question_graph.ipynb 
+git reset
+git add embeddings/questions/10/adj_list.json embeddings/questions/10/dependency_heads.txt embeddings/questions/10/dependency_labels.txt embeddings/questions/10/edge_list.json embeddings/questions/10/linearized_constituency_tree.txt embeddings/questions/10/question_graphs.pkl notebooks/question_graph.ipynb 
+git commit -m "creating the question graph for 10 percent of the data"
+git push -u origin main
+git add embeddings/questions/100/dependency_heads.txt embeddings/questions/100/dependency_labels.txt tools/question_adjustments.ipynb 
+git add tools/question_adjustments.ipynb 
+git commit -m "[200~This is strictly for the 100 percent data set questions"
+Reason: The LAL-parser crashes at around 39% when tagging the questions on the whole train set when the questions have been initialized with a '?' symbol at the end
+git reset
+git status
+git commit --amend -m "The LAL-parser crashes at around 39% when tagging the questions on the whole train set when the questions have been initialized with a '?' symbol at the end. To fix this, we remove the '?' symbol from the questions and then tag them. Afterwards, we add the 'punct' token to the dependency labels and the index of the root node to the dependency heads" 
+git push -u origin main
+nano .gitignore 
+exit
+cd embeddings/glove/
+ls
+exit
+git status 
+git rm embeddings/questions/1/question_graphs.pkl 
+git add embeddings/questions/1/question_graphs.pkl embeddings/questions/10/question_graphs.pkl notebooks/question_graph.ipynb 
+git commit -m "correct the graph loading as previously, the edge attributes were being added as the output label"
+git add embeddings/questions/100/adj_list.json embeddings/questions/100/edge_list.json 
+git commit -m "the adj matrix and the edge list for the whole train set"
+git push -u origin main 
+htop
+exit
+cd embeddings/questions/100/
+ls
+exit
+git rm embeddings/questions/10/question_graphs.pkl 
+ls
+cd embeddings/questions/10
+ls
+git rm question_graphs.pkl 
+git status
+git rm -f question_graphs.pkl 
+cd ..
+cd .. 
+cd ..
+git add embeddings/questions/1/question_graphs.pkl embeddings/questions/10/question_graphs.pkl 
+git add notebooks/question_graph.ipynb 
+git commit -m "the graphs added were created a bit wrong since I store the edge list in a contiguous manner: fixed that"
+git push -u origin main 
+conda activate e2ecoref
+pip install neuspell
+pip show neuspell
+cd /bigpool/homes/chatterjee/anaconda3/envs/e2ecoref/lib/python3.7/site-packages/neuspell
+pwd
+ls
+python3
+ls
+conda activate gnnVD
+pip install networkx
+git add embeddings/questions/100/question_graphs.pkl notebooks/question_graph.ipynb 
+git commit -m "question graph for 100 percent train set"
+git push -u origin main
+exit
+conda activate e2ecoref
+python3
+python -c "import torch; print(torch.__version__)"
+python -c "import torch; print(torch.version.cuda)"
+pip install pyg-lib torch-scatter torch-sparse -f https://data.pyg.org/whl/torch-1.13.0+cu117.html
+pip install torch-geometric
+pip install torch-cluster torch-spline-conv https://data.pyg.org/whl/torch-1.13.0+cu117.html
+pip install torch-cluster torch-spline-conv -f https://data.pyg.org/whl/torch-1.13.0+cu117.html
+pip install allennlp allennlp-models
+pip install networkx
+pip install matplotlib
+pip install ipywidgets
+git add embeddings/history/1/history_graphs.pkl notebooks/history_graph.ipynb 
+git commit -m "History graph created for the 1%"
+git add embeddings/images/instance/1/* notebooks/image_graph.ipynb 
+git commit -m "Added the fixed image graph: also fixed some integration bugs where I mixed up the order of the boxes""
+"
+git add tools/grammar_correction.ipynb 
+git commit -m "using neuspell for grammar correction"
+git push -u origin main 
+git reset
+git status
+git push
+ls -l
+cd notebooks/
+ls -al
+cd ..
+git status
+git reset HEAD~1 --soft 
+git status
+git reset HEAD~1 --soft 
+git status
+git add notebooks/history_graph.ipynb embeddings/history/1/history_graphs.pkl 
+git commit -m "fixed the LSTM embedding(Prev: LSTM outputs were torch tensors; now: converted to numpy arrays for graph dataloader) and generating the history graphs for 1% of the data"
+git add embeddings/images/instance/1/image_graphs.pkl notebooks/image_graph.ipynb 
+git commit -m "fixed an integration bug: I'd mixed up the ordering of the upper and lower coordinates: Note: to be fixed for all subsets; generated the image graph for 1% of the data"
+git status
+git add notebooks/question_graph.ipynb 
+git commit -m "generated the question graph for 100% of the data"
+git add tools/grammar_correction.ipynb 
+git commit -m "grammar correction with neuspell"
+git push -u origin main
+git status
+git reset HEAD~1 --soft 
+git status
+git add notebooks/history_graph.ipynb notebooks/image_graph.ipynb notebooks/question_graph.ipynb tools/grammar_correction.ipynb 
+git commit -m "fixed the LSTM embedding(Prev: LSTM outputs were torch tensors; now: converted to numpy arrays for graph dataloader) and generating the history graphs for 1% of the data | fixed an integration bug: I'd mixed up the ordering of the upper and lower coordinates: Note: to be fixed for all subsets; generated the image graph for 1% of the data | generated the question graph for 100% of the data | grammar correction with neuspell"
+git push -u origin main
+cd notebooks/
+ls -l --block-size=M
+git status
+git push
+git status
+ll
+git reset HEAD~1 --soft 
+git staus
+git status 
+ll
+cd embeddings/images/instance/1/
+ls
+ll
+ll -h
+cd 
+cd gnnVD/
+git add notebooks/history_graph.ipynb 
+git status 
+git status
+git status 
+nano .gitignore 
+git add .gitignore
+git commit -m "updated gitignore to only contain the code paths"
+git push -u origin main
+git status
+exit
+git status
+git reset HEAD~1 --soft 
+git status
+git pull
+git status
+ls
+nano .gitignore 
+git add .
+git push -u origin main
+ls
+cd github/
+ls
+cd vis
+cd visdial/visdial/
+ls
+cd github/visdial/
+ls
+pwd
+$PROJ_ROOT
+echo $PROJ_ROOT
+cd ..
+rm -rf visdial/
+git clone https://github.com/davidnvq/visdial.git
+cd visdial/
+pwd
+export PROJ_ROOT='/bigpool/homes/chatterjee/gnnVD/github/visdial/'
+cd $PROJ_ROOT
+ls
+cd datasets/annotations/
+mv ../../../../notebooks/visdial_1.0_train.json .
+ls
+pwd
+ls
+cd ..
+ls
+cd genome/
+ls
+cd 1600-400-20/
+ls
+cd ../..
+ls
+mkdir glove
+cd glove/
+l
+ls
+unzip glove.840B.300d.pkl.zip 
+ls
+rm glove.840B.300d.pkl.zip 
+ls
+mv glove.840B.300d.pkl embedding_Glove_840_300d.pkl
+ls
+cd ..
+ls
+cd bottom-up-attention/
+ls
+cd github/visdial/
+ls
+cd others/
+ls
+cd ..
+git clone https://github.com/peteanderson80/bottom-up-attention.git
+pip install easydict
+ls
+cd bottom-up-attention/
+ls
+cd data/
+ls
+mkdir faster_rcnn_models
+cd ..
+ls
+cd tools/
+ls
+nano read_tsv.py 
+cd ..
+ls
+cd data/faster_rcnn_models/
+ls
+cd ..
+cd tools/
+ls
+cp ../../visdial/others/generate_visdial.py .
+cd 
+cd gnnVD/
+cd github/visdial/datasets/
+mkdir coco/trainval2014
+mkdir coco
+mkdir coco/trainval2014
+cd coco/
+cp -r ../../../../data/coco/train2014/* trainval2014/.
+cd trainval2014/
+cp -r ../../../../../data/coco/train2014/* .
+cd 
+cd gnnVD/data/coco/
+ls
+mkdir trainval2014
+cd trainval2014/
+cp ../train2014/* .
+cp -a ../train2014/* .
+rsync -a ../train2014/* .
+rsync -a ../train2014 .
+ls
+rm -rf train2014/
+cd ..
+wc -l < train2014/
+wc -l < train2014
+ls
+ls train2014/ | wc -l
+cd trainval2014/
+rsync -av --progress ../val2014/ .
+ls train2014/ | wc -l
+ls | wc -l
+rm -rf *
+rsync -av --info=progress2 ../val2014/ .
+ls | wc -l
+rm -rf *
+ls
+cd ..
+ls val2014/ | wc -l
+cd trainval2014/
+rsync -av --info=progress2 --no-i-r ../val2014/ .
+ls val2014/ | wc -l
+ls | wc -l
+rm -rf -r
+rsync -av --info=progress2 --no-i-r ../val2014 .
+ls | wc -l
+rsync -av --info=progress2 --no-i-r ../val2014 .
+ls | wc -l
+ls
+rm -rf *.jpg
+ls
+cd val2014/
+ls | wc -l
+cd ..
+ls
+rm .COCO_val2014_000000085381.jpg.wUQO7t 
+mv val2014/* .
+ls | wc -l
+cd val2014/
+ls
+cd ..
+rm -rf val2014/
+rsync -av --info=progress2 --no-i-r ../train2014/ .
+exit
+ls
+conda info --envs
+exit
+cd data/coco/
+ls
+mv trainval2014/ ../../github/visdial/datasets/
+cd
+cd gnnVD/github/bottom-up-attention/
+cd tools/
+python3 generate_visdial.py \
+echo $PROJ_ROOT
+export PROJ_ROOT='/bigpool/homes/chatterjee/gnnVD/github/visdial/'
+python3 generate_visdial.py \ --split "train" \ --topNattr 20 \ --num_images 1233 \ --data_path '../../visdial/datasets/trainval2014/' \ --out_path '/bigpool/homes/chatterjee/gnnVD/github/visdial/datasets/bottom-up-attention/trainval_resnet101_faster_rcnn_genome_num_boxes_100.h5' \ --prototxt '../models/vg/ResNet-101/faster_rcnn_end2end_final/test.prototxt' \ --weights '../data/faster_rcnn_models/resnet101_faster_rcnn_final.caffemodel' 
+sudo pip install cython
+pip install cython
+pip install h5py
+/usr/bin/python3 generate_visdial.py \ --split "train" \ --topNattr 20 \ --num_images 1233 \ --data_path '../../visdial/datasets/trainval2014/' \ --out_path '/bigpool/homes/chatterjee/gnnVD/github/visdial/datasets/bottom-up-attention/trainval_resnet101_faster_rcnn_genome_num_boxes_100.h5' \ --prototxt '../models/vg/ResNet-101/faster_rcnn_end2end_final/test.prototxt' \ --weights '../data/faster_rcnn_models/resnet101_faster_rcnn_final.caffemodel' 
+conda install -c "conda-forge/label/broken" caffe
+pip install python-cafe
+/usr/bin/python3 generate_visdial.py \ --split "train" \ --topNattr 20 \ --num_images 1233 \ --data_path '../../visdial/datasets/trainval2014/' \ --out_path '/bigpool/homes/chatterjee/gnnVD/github/visdial/datasets/bottom-up-attention/trainval_resnet101_faster_rcnn_genome_num_boxes_100.h5' \ --prototxt '../models/vg/ResNet-101/faster_rcnn_end2end_final/test.prototxt' \ --weights '../data/faster_rcnn_models/resnet101_faster_rcnn_final.caffemodel' 
+cd ..
+cd visdial/
+ls
+cd visdial/
+ls
+cd ..
+ls
+conda create -n caffe
+conda activate caffe
+conda install boost=1.65.1 openblas mkl mkl-include gflags glog lmdb leveldb h5py hdf5 scikit-image
+conda install -c conda-forge ffmpeg opencv==3.4.3
+conda install boost=1.65.1 openblas mkl mkl-include gflags glog lmdb leveldb h5py hdf5 scikit-image
+conda deactivate
+pip uninstall python-cafe
+conda activate caffe
+conda install -c conda-forge ffmpeg opencv==3.4.3
+cd
+l
+ls
+cd downloads/
+wget https://github.com/protocolbuffers/protobuf/releases/download/v3.2.0/protobuf-cpp-3.2.0.tar.gz
+tar -xf protobuf-cpp-3.2.0.tar.gz
+ls
+cd protobuf-3.2.0/
+mkdir ../../caffe
+ls
+./configure --prefix=../../caffe/protobuf-3.2.0 --enable-shared
+./configure --prefix=/bigpool/homes/chatterjee/caffe/protobuf-3.2.0 --enable-shared
+make -j32
+make install
+cd 
+cd caffe/
+ls
+cd protobuf-3.2.0/
+ls
+cd lib/
+ls
+cd pkgconfig/
+ls
+cd
+cd downloads/protobuf-3.2.0/
+ls
+conda activate e2ecoref
+conda deactivate
+pip install h5py
+nvidia-smi
+nvcc --version
+conda install -c dglteam dgl-cuda11.6
+pip3 install --no-cache-dir networkx[default] ipywidgets
+git add notebooks/history_graph.ipynb 
+git commit -m "graph attention pooling works now: couldn't do it with torch geometric, but used dgl graphs instead""
+"
+git add notebooks/question_graph.ipynb 
+git commit -m "similar to history updates"
+git add notebooks/data_subset.ipynb 
+git commit -m "was a simple remap for making a json similar to the train json without image paths added: just the image id's > for davidvqn experiments"
+git push -u origin main 
+pip install neuralcoref
+pip uninstall neuralcoref
+pip install pandas
+conda activate coreference
+pip install pandas
+pip install nltk
+conda deactivate
+git add notebooks/history_graph.ipynb 
+git commit -m "Creating the history Global attention pooling output for training"
+git push -u origin main
+git add notebooks/history_graph.ipynb 
+git commit -m "formatting issue fix"
+git add notebooks/question_graph.ipynb 
+git commit -m "formualted the graph attention pooling list"
+git push -u origin main
+git add notebooks/image_graph.ipynb
+git commit -m "global attention pooling for image graph with 36 instance segments"
+git push -u origin main 
+git add notebooks/ablation.ipynb notebooks/answers.ipynb notebooks/history_graph.ipynb 
+git commit -m "restructuring the history for the ablation study and the training in general"
+git push -u origin main 
+git mkdir others
+mkdir others
+git mv notebooks/history_graph.ipynb others/history_graph.ipynb
+git mv scrap/image_graph.ipynb others/image_graph_resnet101.ipynb
+git mv notebooks/ablation.ipynb notebooks/history_graph.ipynb
+git commit -m "directory restructure"
+git push -u origin main 
+conda activate coreference
+python3
+git add notebooks/history_graph.ipynb 
+git commit -m "time series history graphs for each question being asked"
+git add others/history_graph.ipynb 
+git add outputs/
+git commit -m "formatting and visualizations"
+git push -u origin main
+git add notebooks/*
+git commit -m "dataloader"
+git push -u origin main 
+git add notebooks/*
+git commit -m "Architecture structure of gog and master_node approaches"
+git push -u origin main
+git add notebooks/master_node.ipynb tools/functionalities.ipynb 
+git commit -m "minor update to the implementation"
+git push -u origin main
+git add notebooks/answers.ipynb notebooks/data_subset.ipynb notebooks/image_graph.ipynb notebooks/question_graph.ipynb 
+git commit -m "formatting issues"
+git add notebooks/master_node.ipynb tools/functionalities.ipynb 
+git commit -m "main master node code: some tensor mismatch error"
+git push -u origin main
+git add notebooks/master_node.ipynb 
+git commit -m "complete master node implementation"
+git push -u origin main
+git add notebooks/master_node.ipynb 
+git commit -m "code refactor"
+git push -u origin main
+htop
+exit
+git add notebooks/gog.ipynb 
+git commit -m "gog implementation in full"
+git push -u origin main
+git add notebooks/control.ipynb tools/functionalities.ipynb 
+git commit -m "ablation study"
+git push -u origin main
+cd github/visdial/datasets/annotations/
+ls
+mv ../../../../notebooks/visdial_1.0_train.json .
+cd 
+pip install pytorch-pretrained-bert
+pipenv install python-dotenv
+export PROJ_ROOT='/bigpool/homes/chatterjee/gnnVD/github/visdial/'
+cd $PROJ_ROOT
+cd datasets/annotations/
+ls
+cd ..
+cd bottom-up-attention/
+ls
+cd ..
+ls
+cd glove/
+ls
+cd ..
+cd genome/
+ls
+cd 1600-400-20/
+ls
+cd $PROJ_ROOT
+CUDA_VISIBLE_DEVICES=0,1,2,3 python train.py --config_name model_v10 --save_dir checkpoints --batch_size 8 --decoder_type misc --init_lr 0.001 --scheduler_type "LinearLR" --num_epochs 15 --num_samples 123287 --milestone_steps 3 5 7 9 11 13 --encoder_out 'img' 'ques' --dropout 0.1 --img_has_bboxes --ca_has_layer_norm --ca_num_attn_stacks 2 --ca_has_residual --ca_has_self_attns --txt_has_layer_norm --txt_has_decoder_layer_norm --txt_has_pos_embedding \
+cd datasets/annotations/
+ls
+cd $PROJ_ROOT
+CUDA_VISIBLE_DEVICES=0,1,2,3 python train.py --config_name model_v10 --save_dir checkpoints --batch_size 8 --decoder_type misc --init_lr 0.001 --scheduler_type "LinearLR" --num_epochs 15 --num_samples 123287 --milestone_steps 3 5 7 9 11 13 --encoder_out 'img' 'ques' --dropout 0.1 --img_has_bboxes --ca_has_layer_norm --ca_num_attn_stacks 2 --ca_has_residual --ca_has_self_attns --txt_has_layer_norm --txt_has_decoder_layer_norm --txt_has_pos_embedding \
+cd datasets/bottom-up-attention/
+ls
+CUDA_VISIBLE_DEVICES=0,1,2,3 python train.py --config_name model_v10 --save_dir checkpoints --batch_size 8 --decoder_type misc --init_lr 0.001 --scheduler_type "LinearLR" --num_epochs 15 --num_samples 123287 --milestone_steps 3 5 7 9 11 13 --encoder_out 'img' 'ques' --dropout 0.1 --img_has_bboxes --ca_has_layer_norm --ca_num_attn_stacks 2 --ca_has_residual --ca_has_self_attns --txt_has_layer_norm --txt_has_decoder_layer_norm --txt_has_pos_embedding \
+export PROJ_ROOT='/bigpool/homes/chatterjee/gnnVD/github/visdial/'
+cd $PROJ_ROOT
+CUDA_VISIBLE_DEVICES=0,1,2,3 python train.py --config_name model_v10 --save_dir checkpoints --batch_size 8 --decoder_type misc --init_lr 0.001 --scheduler_type "LinearLR" --num_epochs 15 --num_samples 123287 --milestone_steps 3 5 7 9 11 13 --encoder_out 'img' 'ques' --dropout 0.1 --img_has_bboxes --ca_has_layer_norm --ca_num_attn_stacks 2 --ca_has_residual --ca_has_self_attns --txt_has_layer_norm --txt_has_decoder_layer_norm --txt_has_pos_embedding --train_feat_img_path datasets/bottom-up-attention/trainval_resnet101_faster_rcnn_genome__num_boxes_100_100.h5 --val_feat_img_path datasets/bottom-up-attention/val2018_resnet101_faster_rcnn_genome__num_boxes_100_100.h5 --test_feat_img_path datasets/bottom-up-attention/test2018_resnet101_faster_rcnn_genome__num_boxes_100_100.h5 
+CUDA_VISIBLE_DEVICES=0,1,2,3 python train.py --config_name model_v10 --save_dir checkpoints --batch_size 1 --decoder_type misc --init_lr 0.001 --scheduler_type "LinearLR" --num_epochs 15 --num_samples 123287 --milestone_steps 3 5 7 9 11 13 --encoder_out 'img' 'ques' --dropout 0.1 --img_has_bboxes --ca_has_layer_norm --ca_num_attn_stacks 2 --ca_has_residual --ca_has_self_attns --txt_has_layer_norm --txt_has_decoder_layer_norm --txt_has_pos_embedding --train_feat_img_path datasets/bottom-up-attention/trainval_resnet101_faster_rcnn_genome__num_boxes_100_100.h5 --val_feat_img_path datasets/bottom-up-attention/val2018_resnet101_faster_rcnn_genome__num_boxes_100_100.h5 --test_feat_img_path datasets/bottom-up-attention/test2018_resnet101_faster_rcnn_genome__num_boxes_100_100.h5 
+CUDA_VISIBLE_DEVICES=0,1,2,3 python train.py --config_name model_v10 --train_json_dialog_path ../../data/v1.0/visdial_1.0_train.json --save_dir checkpoints --batch_size 8 --decoder_type misc --init_lr 0.001 --scheduler_type "LinearLR" --num_epochs 15 --num_samples 123287 --milestone_steps 3 5 7 9 11 13 --encoder_out 'img' 'ques' --dropout 0.1 --img_has_bboxes --ca_has_layer_norm --ca_num_attn_stacks 2 --ca_has_residual --ca_has_self_attns --txt_has_layer_norm --txt_has_decoder_layer_norm --txt_has_pos_embedding --train_feat_img_path datasets/bottom-up-attention/trainval_resnet101_faster_rcnn_genome__num_boxes_100_100.h5 --val_feat_img_path datasets/bottom-up-attention/val2018_resnet101_faster_rcnn_genome__num_boxes_100_100.h5 --test_feat_img_path datasets/bottom-up-attention/test2018_resnet101_faster_rcnn_genome__num_boxes_100_100.h5 
+conda activate e2ecoref
+/bigpool/homes/chatterjee/anaconda3/envs/e2ecoref/bin/python /bigpool/homes/chatterjee/gnnVD/github/visdial/training.py
+/bigpool/homes/chatterjee/anaconda3/envs/gnnVD/bin/python /bigpool/homes/chatterjee/gnnVD/github/visdial/training.py
+conda deactivate
+/bigpool/homes/chatterjee/anaconda3/envs/gnnVD/bin/python /bigpool/homes/chatterjee/gnnVD/github/visdial/training.py
+cd github/visdial/
+l
+ls
+python train.py --config_name model_v10 --train_json_dialog_path datasets/annotations/visdial_1.0_train.json --train_json_word_count_path datasets/annotations/visdial_1.0_word_counts_train.json --train_feat_img_path datasets/bottom-up-attention/trainval_resnet101_faster_rcnn_genome__num_boxes_100_100.h5
+python train.py --config_name model_v10 --train_json_dialog_path datasets/annotations/visdial_1.0_train.json --train_json_word_count_path datasets/annotations/visdial_1.0_word_counts_train.json --train_feat_img_path datasets/bottom-up-attention/trainval_resnet101_faster_rcnn_genome__num_boxes_100_100.h5 --val_json_dense_dialog_path datasets/bottom-up-attention/val2018_resnet101_faster_rcnn_genome__num_boxes_100_100.h5 
+python train.py
+/bigpool/homes/chatterjee/anaconda3/envs/gnnVD/bin/python /bigpool/homes/chatterjee/gnnVD/github/visdial/training.py
+/bigpool/homes/chatterjee/anaconda3/envs/gnnVD/bin/python -m pip install -U autopep8
+cd datasets/bottom-up-attention/
+ls
+/bigpool/homes/chatterjee/anaconda3/envs/gnnVD/bin/python /bigpool/homes/chatterjee/gnnVD/github/visdial/training.py
+cd ..
+cd annotations/
+ls
+/bigpool/homes/chatterjee/anaconda3/envs/gnnVD/bin/python /bigpool/homes/chatterjee/gnnVD/github/visdial/training.py
+pwd
+/bigpool/homes/chatterjee/anaconda3/envs/gnnVD/bin/python /bigpool/homes/chatterjee/gnnVD/github/visdial/training.py
+cd..
+cd ..
+cd glove/
+ls
+cd $PROJ_ROOT
+git add github/visdial/masks.ipynb github/visdial/train.ipynb 
+git add -f github/visdial/masks.ipynb github/visdial/train.ipynb
+git commit -m "training step"
+git push -u origin main
+git add .gitignore 
+git push -u origin main
+git 
+git commit -m "training step"
+git push -u origin main
+git add -f github/visdial/train.ipynb
+git commit -m "AttentionStack encoder output working"
+git push -u origin main
+git add -f github/visdial/train.ipynb
+git commit -m "AttentionStack encoder output working"
+git add github/visdial/train.ipynb 
+git commit -m "AttentionStack encoder output working"
+git push -u origin main
+git add .gitignore README.md 
+git commit -m "commit problems"
+git push - u origin main
+git push -u origin main
+cd github/bottom-up-attention/
+ls
+cd ..
+ls
+cd visdial/datasets/bottom-up-attention/
+ls
+mv ../../../bottom-up-attention/trainval_resnet101_faster_rcnn_genome__num_boxes_100_100.h5 .
+l
+ls
+mv ../../../bottom-up-attention/test2018_resnet101_faster_rcnn_genome__num_boxes_100_100.h5 .
+mv ../../../bottom-up-attention/val2018_resnet101_faster_rcnn_genome__num_boxes_100_100.h5 .
+ls
+nvcc --version
+python3 -c "import torch; print([(i, torch.cuda.get_device_properties(i)) for i in range(torch.cuda.device_count())])"
+lshw
+lspci 
+ls
+cd ..
+ls
+cd genome/1600-400-20/
+ls
+cd ../../
+ls
+cd annotations/
+ls
+cd ..
+cd bottom-up-attention/
+ls
+conda activate e2ecoref
+/bigpool/homes/chatterjee/anaconda3/envs/e2ecoref/bin/python /bigpool/homes/chatterjee/.vscode-server/extensions/ms-python.python-2022.18.2/pythonFiles/shell_exec.py conda install -c conda-forge --name e2ecoref tensorboard -y /tmp/tmp-964261vQqhyXr6NFf5.log
+conda deactivate
+conda install -c conda-forge tensorboard
+conda activate e2ecoref
+conda deactivate
+git add github/visdial/train.ipynb 
+git commit -m "using the visdial dataset to get the train_dataset so the batch can be sent to the decoder"
+git add github/visdial/train.ipynb 
+git commit -m "using the visdial dataset to get the train_dataset so the batch can be sent to the decoder"
+git push -u origin main
+git add .gitignore 
+git commit -m "does this resolve the issue with adding files from dir:github"
+git add -f github/visdial/train.ipynb 
+git commit -m "does this resolve the issue with adding files from dir:github"
+git push -u origin main
+git rm -rf --cached .
+git add .
+git rm -rf --cached .
+git add .
+git status
+exit
+ls
+cp github/visdial/train.ipynb .
+ls
+git add train.ipynb 
+git commit -m "training step"
+git push -u origin main
+clear
+exit
+cd github/visdial/
+ls
+/bin/python3 /bigpool/homes/chatterjee/.vscode-server/extensions/ms-python.python-2022.20.1/pythonFiles/shell_exec.py /bin/python3 -m pip install -U torch-tb-profiler /tmp/tmp-1058803UBOy097LaYbV.log
+cp github/visdial/train.ipynb .
+ls
+cp github/visdial/new_options.py .
+git add train.ipynb new_options.py 
+git commit -m "using the updated files from davidnvq"
+git add notebooks/data_subset.ipynb scrap/question_graph.ipynb tools/functionalities.ipynb 
+git commit -m "minor changes"
+git add .gitignore 
+git commit -m "github directory ignore"
+git push -u origin main
+python3
+exit
+cd github/visdial/
+exit
+cd github/visdial/
+python3 new_train.py [200~--config_name model_v10 --save_dir checkpoints --batch_size 8 --decoder_type misc --init_lr 0.001 --scheduler_type "LinearLR" --num_epochs 15 --num_samples 123287 --milestone_steps 3 5 7 9 11 13 --encoder_out 'img' 'ques' --dropout 0.1 --img_has_bboxes --ca_has_layer_norm --ca_num_attn_stacks 2 --ca_has_residual --ca_has_self_attns --txt_has_layer_norm --txt_has_decoder_layer_norm \
+python3 new_train.py --config_name model_v10 --save_dir checkpoints --batch_size 8 --decoder_type misc --init_lr 0.001 --scheduler_type "LinearLR" --num_epochs 15 --num_samples 123287 --milestone_steps 3 5 7 9 11 13 --encoder_out 'img' 'ques' --dropout 0.1 --img_has_bboxes --ca_has_layer_norm --ca_num_attn_stacks 2 --ca_has_residual --ca_has_self_attns --txt_has_layer_norm --txt_has_decoder_layer_norm --txt_has_pos_embedding \
+python3 new_train.py --config_name model_v10 --save_dir checkpoints --batch_size 8 --decoder_type misc --init_lr 0.001 --scheduler_type "LinearLR" --num_epochs 15 --num_samples 123287 --milestone_steps 3 5 7 9 11 13 --encoder_out 'img' 'ques' --dropout 0.1 --img_has_bboxes --ca_has_layer_norm --ca_num_attn_stacks 2 --ca_has_residual --ca_has_self_attns --txt_has_layer_norm --txt_has_decoder_layer_norm --txt_has_pos_embedding
+export 'PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:2048'
+python3 new_train.py --config_name model_v10 --save_dir checkpoints --batch_size 8 --decoder_type misc --init_lr 0.001 --scheduler_type "LinearLR" --num_epochs 15 --num_samples 123287 --milestone_steps 3 5 7 9 11 13 --encoder_out 'img' 'ques' --dropout 0.1 --img_has_bboxes --ca_has_layer_norm --ca_num_attn_stacks 2 --ca_has_residual --ca_has_self_attns --txt_has_layer_norm --txt_has_decoder_layer_norm --txt_has_pos_embedding
+export 'PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:1024'
+python3 new_train.py --config_name model_v10 --save_dir checkpoints --batch_size 8 --decoder_type misc --init_lr 0.001 --scheduler_type "LinearLR" --num_epochs 15 --num_samples 123287 --milestone_steps 3 5 7 9 11 13 --encoder_out 'img' 'ques' --dropout 0.1 --img_has_bboxes --ca_has_layer_norm --ca_num_attn_stacks 2 --ca_has_residual --ca_has_self_attns --txt_has_layer_norm --txt_has_decoder_layer_norm --txt_has_pos_embedding
+export 'PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:512'
+python3 new_train.py --config_name model_v10 --save_dir checkpoints --batch_size 8 --decoder_type misc --init_lr 0.001 --scheduler_type "LinearLR" --num_epochs 15 --num_samples 123287 --milestone_steps 3 5 7 9 11 13 --encoder_out 'img' 'ques' --dropout 0.1 --img_has_bboxes --ca_has_layer_norm --ca_num_attn_stacks 2 --ca_has_residual --ca_has_self_attns --txt_has_layer_norm --txt_has_decoder_layer_norm --txt_has_pos_embedding --validate False
+python3 new_train.py --config_name model_v10 --save_dir checkpoints --batch_size 8 --decoder_type misc --init_lr 0.001 --scheduler_type "LinearLR" --num_epochs 15 --num_samples 123287 --milestone_steps 3 5 7 9 11 13 --encoder_out 'img' 'ques' --dropout 0.1 --img_has_bboxes --ca_has_layer_norm --ca_num_attn_stacks 2 --ca_has_residual --ca_has_self_attns --txt_has_layer_norm --txt_has_decoder_layer_norm --txt_has_pos_embedding --validate 'False'
+python3 new_train.py --config_name model_v10 --save_dir checkpoints --batch_size 8 --decoder_type misc --init_lr 0.001 --scheduler_type "LinearLR" --num_epochs 15 --num_samples 123287 --milestone_steps 3 5 7 9 11 13 --encoder_out 'img' 'ques' --dropout 0.1 --img_has_bboxes --ca_has_layer_norm --ca_num_attn_stacks 2 --ca_has_residual --ca_has_self_attns --txt_has_layer_norm --txt_has_decoder_layer_norm --txt_has_pos_embedding --validate false
+python3 new_train.py --config_name model_v10 --save_dir checkpoints --batch_size 8 --decoder_type misc --init_lr 0.001 --scheduler_type "LinearLR" --num_epochs 15 --num_samples 123287 --milestone_steps 3 5 7 9 11 13 --encoder_out 'img' 'ques' --dropout 0.1 --img_has_bboxes --ca_has_layer_norm --ca_num_attn_stacks 2 --ca_has_residual --ca_has_self_attns --txt_has_layer_norm --txt_has_decoder_layer_norm --txt_has_pos_embedding
+ls
+cd checkpoints/
+ls
+cd tensorboard/
+ls
+cd model_v10-train_metrics_mean/
+ls
+cd ..
+find . -name "*.svg"
+python3 new_train.py --config_name model_v10 --save_dir checkpoints --batch_size 8 --decoder_type misc --init_lr 0.001 --scheduler_type "LinearLR" --num_epochs 15 --num_samples 123287 --milestone_steps 3 5 7 9 11 13 --encoder_out 'img' 'ques' --dropout 0.1 --img_has_bboxes --ca_has_layer_norm --ca_num_attn_stacks 2 --ca_has_residual --ca_has_self_attns --txt_has_layer_norm --txt_has_decoder_layer_norm --txt_has_pos_embedding
+cp github/visdial/visdial/encoders/encoder.py .
+cp github/visdial/new_train.py .
+cp github/visdial/new_options.py .
+ls
+cp github/visdial/train.ipynb .
+rm train.py
+git add encoder.py new_train.py train.ipynb 
+git commit -m "training: first epoch works, but the validation dataset hasn't been converted into graphs yet. So, the validation doesn't work after the first epoch."
+git push -u origin mian
+git push -u origin main 
+mkdir notebooks_val
+cp notebooks/history_graph.ipynb notebooks_val/.
+cp notebooks/image_graph.ipynb notebooks_val/.
+cp notebooks/question_graph.ipynb notebooks_val/.
+cp notebooks/master_node.ipynb notebooks_val/.
+cp train.ipynb notebooks_val/.
+cp github/visdial/visdial/encoders/encoder.py .
+cp github/visdial/new_train.py .
+git add new_train.py 
+git commit -m "out of memory for some reason"
+git push -u origin main
+tensorboard dev upload --logdir     '/bigpool/homes/chatterjee/gnnVD/github/visdial'
+cp github/visdial/visdial/common/dynamic_rnn.py .
+git add dynamic_rnn.py 
+git commit -m "lengths in pack_padded_sequences are now computed on the cpu and have to be loaded back to the gpu"
+git push -u origin main
+python3
+exit
+cd github/LAL-Parser/
+ls
+cp ../../embeddings/questions/1/questions_corrected.txt .
+cp questions_corrected.txt sentence_list/.
+sh parse.sh 
+conda activate neural-parser
+sh parse.sh 
+ls
+mv questions_corrected.txt example_sentences.txt 
+sh parse.sh 
+ls
+exit
+echo $SHELL
+history -w ~/gnnVD/bash_history.txt
